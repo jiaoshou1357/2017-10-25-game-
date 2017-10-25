@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" 
+content="width=device-width,user-scalable=yes,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+<title>Document</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="content">
+ <div class="logo"><img src="images/logo.png"></div>
+ <div class="pageNumber">
+ 	<div class="pageBg"></div>
+ 	<div class="pageTittle">2/7</div>
+ </div>
+ <div class="mainTittle">
+ 	 <h3>以下哪一句金句最能表現你自己</h3>
+ </div>
+ <div class="boxs">
+ 	<div class="page2_item" name="showSelf" value="1" style="background:#62cbcd;color:white;border:none;">"I don't do fashion. I am fashion"</div>
+ 	<div class="page2_item" name="showSelf" value="2">"房间打开肌肤大幅降低开发"</div>
+ 	<div class="page2_item" name="showSelf" value="3">"房间打开肌肤大幅降低开发"</div>
+ 	<div class="page2_item" name="showSelf" value="4">"房间打开肌肤大幅降低开发"</div>
+ </div>
+ <div class="next">
+ 	<a href="page3.html"><h3>NEXT</h3></a>
+ </div>
+</div>
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript">
+ $(function(){
+ 	var page2_result={ //要发送数据
+         name:'showSelf',
+         value:'1'
+ 	  }
+ 	$(".page2_item").click(function(){
+ 		$(this).css({background:'#62cbcd',color:'white',border:'none'})
+ 		$(this).siblings(".page2_item").css({background:'none',color:'black',border:'1px solid #ccc'})
+ 		page2_result.value=$(this).attr("value") //点击选择value值
+ 		console.log(page2_result)
+ 	})
+ 	$(".submit").click(function(){
+ 		//通过ajax把选择的数据发送到后台，发送成功后跳转下一页
+ 		$.post('dataHandle.php',page2_result,function(){
+ 			location.href="page3.html" //发送成功后跳转
+ 		})
+ 	})
+ })
+</script>		
+</body>
+</html>
